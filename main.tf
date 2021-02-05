@@ -21,12 +21,12 @@ provider "random" {
 resource "random_pet" "org_name" {}
 
 resource "tfe_organization" "org" {
-  name  = ${random_pet.org.id}
+  name  = random_pet.org.id
   email = var.email
 }
 
 resource "tfe_oauth_client" "oauth" {
-  organization = var.organization
+  organization = tfe_organization.org.name
   api_url = "https://api.github.com"
   http_url = "https://github.com"
   oauth_token = var.oauth_token

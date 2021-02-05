@@ -5,9 +5,7 @@ variable "hostname" {
 
 variable "oauth_token" {
   type = string
-  description = "Go to github and create a [personal access token](https://github.com/settings/tokens/new)
-with the `repo` and `admin:repo_hook` scopes. Use this generated value for your
-`oauth_token` value in `terraform.tfvars`."
+  description = "Go to github and create a [personal access token](https://github.com/settings/tokens/new) with the `repo` and `admin:repo_hook` scopes. Use this generated value for your `oauth_token` value in `terraform.tfvars`."
 }
 
 variable "workspace_count" {
