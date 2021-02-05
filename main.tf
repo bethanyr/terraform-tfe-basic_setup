@@ -3,6 +3,9 @@ terraform {
     tfe = {
       version = "~> 0.24.0"
     }
+    random = {
+        version = "2.2"
+    }
   }
 }
 
@@ -11,8 +14,14 @@ provider "tfe" {
   token = var.token
 }
 
+provider "random" {
+
+}
+
+resource "random_pet" "org_name" {}
+
 resource "tfe_organization" "org" {
-  name  = var.organization
+  name  = ${random_pet.org.id}
   email = var.email
 }
 
