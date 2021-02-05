@@ -21,7 +21,7 @@ provider "random" {
 resource "random_pet" "org_name" {}
 
 resource "tfe_organization" "org" {
-  name  = random_pet.org.id
+  name  = random_pet.org_name.id
   email = var.email
 }
 
@@ -43,7 +43,7 @@ resource "tfe_registry_module" "petstore" {
 
 resource "tfe_workspace" "tfr" {
   count = var.workspace_count
-  organization = var.organization
+  organization = tfe_organization.org.name
   name = "tfr${count.index}"
   auto_apply = true
   queue_all_runs = true
